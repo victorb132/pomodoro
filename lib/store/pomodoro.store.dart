@@ -25,14 +25,14 @@ abstract class _PomodoroStore with Store {
   int timeToRest = 1;
 
   @observable
-  TypeInterval typeInterval = TypeInterval.rest;
+  TypeInterval typeInterval = TypeInterval.work;
 
   Timer? cronometer;
 
   @action
   void start() {
     started = true;
-    cronometer = Timer.periodic(const Duration(seconds: 1), (timer) {
+    cronometer = Timer.periodic(const Duration(milliseconds: 50), (timer) {
       if (minutes == 0 && seconds == 0) {
         _changeTypeInterval();
       } else if (seconds == 0) {
